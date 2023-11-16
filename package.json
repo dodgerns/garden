@@ -5,7 +5,6 @@
   "main": "index.js",
   "repository": "https://github.com/dodgerns/garden",
   "scripts": {
-    "build": "npm install",
     "start": "node server",
     "dev": "nodemon server",
     "test": "echo \"Error: no test specified\" && exit 1"
