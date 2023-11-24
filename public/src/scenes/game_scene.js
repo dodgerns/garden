@@ -4,6 +4,7 @@ export default class GameScene extends Phaser.Scene {
         this.video = null;
         this.capturedImage = null;
         this.emitter = emitter;
+        this.captureY = null;
     }
 
     preload() {
@@ -15,6 +16,9 @@ export default class GameScene extends Phaser.Scene {
         this.video.on('play', () => {});
         this.video.once('created', () => {
             this.video.setDisplaySize(window.innerWidth, window.innerHeight).setVisible(true);
+            const captureHeight = this.video.height / 3;
+            this.captureY = this.video.height - captureHeight;
+            console.log(this.captureY);
         });
         navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' }, audio: false })
         .then((stream) => {
@@ -24,16 +28,22 @@ export default class GameScene extends Phaser.Scene {
         .catch((err) => {console.log(err)});
         this.emitter.addEvent('capture_image', this.captureImage, this);
         this.emitter.addEvent('add_information', this.addInformation, this);
+
     }
 
     captureImage() {
         const videoElement = this.video.video;
         const canvas = document.createElement('canvas');
-        canvas.width = videoElement.videoWidth;
-        canvas.height = videoElement.videoHeight;
         const ctx = canvas.getContext('2d');
-        ctx.drawImage(videoElement, 0, 0, canvas.width, canvas.height);
-        this.capturedImage = ctx.getImageData(0, 0, canvas.width, canvas.height);
+        const captureWidth = videoElement.videoWidth;
+        const captureHeight = videoElement.videoHeight / 2.5;
+        const startY = videoElement.videoHeight / 2.5;
+
+        canvas.width = captureWidth;
+        canvas.height = captureHeight;
+
+        ctx.drawImage(videoElement, 0, startY, captureWidth, captureHeight, 0, 0, captureWidth, captureHeight);
+        this.capturedImage = ctx.getImageData(0, 0, captureWidth, captureHeight);
     }
 
     getCapturedImage(){
