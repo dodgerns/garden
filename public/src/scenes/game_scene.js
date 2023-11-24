@@ -16,7 +16,8 @@ export default class GameScene extends Phaser.Scene {
         this.video.once('created', () => {
             this.video.setDisplaySize(window.innerWidth, window.innerHeight).setVisible(true);
         });
-        navigator.mediaDevices.getUserMedia({ video: true, audio: false }).then((stream) => {
+        navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' }, audio: false })
+        .then((stream) => {
             this.video.loadMediaStream(stream, true);
             this.video.play();
         })
