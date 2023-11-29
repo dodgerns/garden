@@ -1,16 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/main.css">
-    <title>Jardin</title>
-    <script src="https://cdn.jsdelivr.net/npm/phaser@3.55.2/dist/phaser.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jsqr/dist/jsQR.min.js"></script>
-    <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+  <meta charset="UTF-8">
+  <title>Jardin</title>
+  <link rel="stylesheet" href="css/main.css">
+  <script src="js/lib/aframe-master.min.js"></script>
+  <script src="js/lib/aframe-ar-nft.js"></script>
 </head>
+
 <body>
-    <div id=game></div>
-    <script type="module" src="src/main.js"></script>
+  <div class="arjs-loader">
+    <div>Loading, please wait...</div>
+  </div>
+  <a-scene id="scene" vr-mode-ui="enabled: false;" renderer="logarithmicDepthBuffer: true;" embedded arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;">
+    <a-entity camera></a-entity>
+  </a-scene>
+  <script type="module" src="js/main.js"></script>
 </body>
 </html>

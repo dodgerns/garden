@@ -1,8 +1,101 @@
-* {
-    margin: 0;
-    padding: 0;
-  }
-#game {
-    width: 100vw;
-    height: 100vh;
+body{
+    margin: 0px;
+    overflow: hidden;
+}
+
+.arjs-loader {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.arjs-loader div {
+    text-align: center;
+    font-size: 1.25em;
+    color: white;
+}
+.description{
+    margin: 0 auto;
+}
+.comicBalloon{
+    border-radius: 25px;
+    background: gray;
+    color: white;
+    padding: 10px;
+    position: absolute;
+    width: 200px;
+    font-family: sans-serif;
+    font-size: 12px;
+    z-index: 1;
+}
+.comicBalloon::after {
+    content: '';
+    position: absolute;
+    bottom: -20px; /* Ajusta la posición del triángulo */
+    left: calc(50% - 20px); /* Posición horizontal del triángulo */
+    background: transparent;
+    width: 0;
+    height: 0;
+    border-bottom: 20px solid gray; /* Altura del triángulo */
+    border-left: 20px solid transparent;
+    z-index: -1;
+    transform: rotate(180deg);
+}
+.narrative{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: gray;
+    color: white;
+    padding: 15px;
+    box-sizing: border-box;
+    text-align: center;
+    font-family: sans-serif;
+    font-size: 12px;
+}
+
+@media (orientation: portrait) {
+    .positionComicBallon0{
+        bottom: 660px;
+        left: 0px;
+    }
+    .positionComicBallon1{
+        bottom:  560px;
+        right: 0px;
+    }
+    .positionComicBallon2{
+        bottom: 250px;
+        left: 0px;
+    }
+    .positionComicBallon3{
+        bottom:  150px;
+        right: 0px;
+    }
+}
+  
+  /* Estilos específicos para landscape */
+@media (orientation: landscape) {
+    .positionComicBallon0{
+        bottom: 170px;
+        left: 0px;
+    }
+    .positionComicBallon1{
+        bottom: 150px;
+        right: 0px;
+    }
+    .positionComicBallon2{
+        bottom: 20px;
+        left: 0px;
+    }
+    .positionComicBallon3{
+        bottom: 10px;
+        right:   0px;
+    }
 }
