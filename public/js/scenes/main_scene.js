@@ -1,7 +1,6 @@
 export default class MainScene{
     constructor(){
     }
-    setScene(){}
     addNfts(sceneId, nfts){
         const scene = document.querySelector(sceneId);
         const entriesPlants = Object.entries(nfts);
@@ -19,30 +18,9 @@ export default class MainScene{
                 nftElement.setAttribute(key, value);
             }
             nftElement.addEventListener('markerFound', () => {
-                entities.forEach((entity) => {
-                    if(!document.getElementById(entity.id)){
-                        const entityElement = document.createElement('a-entity');
-                        const entriesEntity = Object.entries(entity);
-                        for (const [key, value] of entriesEntity) {
-                            entityElement.setAttribute(key, value);
-                            nftElement.appendChild(entityElement);
-                        }
-                    }
-                });
-                texts.forEach((text, index) => {
-                    if(!document.getElementById(text.id)){
-                        const textElement = document.createElement('div');
-                        textElement.classList.add('description', 'comicBalloon', 'positionComicBallon'+index);
-                        textElement.textContent = text.value;
-                        document.body.appendChild(textElement);
-                    }
-                });
-                if(!document.getElementById(narrative.id)){
-                    const narrativeElement = document.createElement('div');
-                    narrativeElement.classList.add('description', 'narrative');
-                    narrativeElement.textContent = narrative.value;
-                    document.body.appendChild(narrativeElement);
-                }
+                this.addEntities(nftElement, entities);
+                this.addTexts(texts);
+                this.addNarrative(narrative);
               });
             scene.appendChild(nftElement);
             nftElement.addEventListener('markerLost', () => {
@@ -53,10 +31,34 @@ export default class MainScene{
             });
         }
     }
-    addEntities(sceneId, entityId){
-
+    addEntities(nftElement, entities){
+        entities.forEach((entity) => {
+            if(!document.getElementById(entity.id)){
+                const entityElement = document.createElement('a-entity');
+                const entriesEntity = Object.entries(entity);
+                for (const [key, value] of entriesEntity) {
+                    entityElement.setAttribute(key, value);
+                    nftElement.appendChild(entityElement);
+                }
+            }
+        });
     }
-    addText(sceneId, text){
-
+    addTexts(texts){
+        texts.forEach((text, index) => {
+            if(!document.getElementById(text.id)){
+                const textElement = document.createElement('div');
+                textElement.classList.add('description', 'comicBalloon', 'positionComicBallon'+index);
+                textElement.textContent = text.value;
+                document.body.appendChild(textElement);
+            }
+        });
+    }
+    addNarrative(narrative){
+        if(!document.getElementById(narrative.id)){
+            const narrativeElement = document.createElement('div');
+            narrativeElement.classList.add('description', 'narrative');
+            narrativeElement.textContent = narrative.value;
+            document.body.appendChild(narrativeElement);
+        }
     }
 }
