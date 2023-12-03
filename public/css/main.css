@@ -20,13 +20,11 @@ body{
     font-size: 1.25em;
     color: white;
 }
-.description{
-    margin: 0 auto;
-}
 .comicBalloon{
     border-radius: 25px;
-    background: gray;
-    color: white;
+    background: white;
+    color: black;
+    border: 2px solid black;
     padding: 10px;
     position: absolute;
     width: 200px;
@@ -37,65 +35,125 @@ body{
 .comicBalloon::after {
     content: '';
     position: absolute;
-    bottom: -20px; /* Ajusta la posición del triángulo */
-    left: calc(50% - 20px); /* Posición horizontal del triángulo */
+    bottom: -20px;
+    left: calc(50% - 20px);
     background: transparent;
     width: 0;
     height: 0;
-    border-bottom: 20px solid gray; /* Altura del triángulo */
+    border-bottom: 20px solid white;
     border-left: 20px solid transparent;
     z-index: -1;
-    transform: rotate(180deg);
 }
-.narrative{
-    position: fixed;
+.text .narrative{
+    position: absolute;
     bottom: 0;
     left: 0;
-    width: 100%;
-    background-color: gray;
-    color: white;
+    background-color: white;
+    color: black;
+    border: 2px solid black;
     padding: 15px;
     box-sizing: border-box;
     text-align: center;
     font-family: sans-serif;
     font-size: 12px;
 }
+.text {
+    color: white;
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    margin: 0 auto;
+}
 
-@media (orientation: portrait) {
-    .positionComicBallon0{
-        bottom: 660px;
-        left: 0px;
+.text .positionComicBallon0,
+.text .positionComicBallon1,
+.text .positionComicBallon2,
+.text .positionComicBallon3 {
+    position: absolute;
+}
+
+@media screen and (orientation: portrait) {
+    .text .positionComicBallon0 {
+        top: 15px;
+        left: 5px;
     }
-    .positionComicBallon1{
-        bottom:  560px;
-        right: 0px;
+
+    .text .positionComicBallon0::after {
+        bottom: -20px;
+        transform: rotate(270deg);
     }
-    .positionComicBallon2{
-        bottom: 250px;
-        left: 0px;
+
+    .text .positionComicBallon1 {
+        top: 100px;
+        right: 5px;
     }
-    .positionComicBallon3{
-        bottom:  150px;
-        right: 0px;
+
+    .text .positionComicBallon1::after {
+        bottom: -20px;
+        transform: rotate(180deg);
+    }
+
+    .text .positionComicBallon2 {
+        bottom: 230px;
+        left: 5px;
+    }
+
+    .text .positionComicBallon2::after {
+        top: -20px;
+        transform: rotate(0deg);
+    }
+
+    .text .positionComicBallon3 {
+        bottom: 150px;
+        right: 5px;
+    }
+    .text .positionComicBallon3::after {
+        top: -20px;
+        transform: rotate(90deg);
     }
 }
-  
-  /* Estilos específicos para landscape */
-@media (orientation: landscape) {
-    .positionComicBallon0{
-        bottom: 170px;
-        left: 0px;
+
+
+@media screen and (orientation: landscape) {
+    .text .positionComicBallon0 {
+        top: 10px;
+        left: 5px;
     }
-    .positionComicBallon1{
-        bottom: 150px;
-        right: 0px;
+
+    .text .positionComicBallon0::after {
+        bottom: -20px;
+        transform: rotate(270deg);
     }
-    .positionComicBallon2{
-        bottom: 20px;
-        left: 0px;
+
+    .text .positionComicBallon1 {
+        top: 13px;
+        right: 5px;
     }
-    .positionComicBallon3{
-        bottom: 10px;
-        right:   0px;
+
+    .text .positionComicBallon1::after {
+        bottom: -20px;
+        transform: rotate(180deg);
+    }
+
+    .text .positionComicBallon2 {
+        bottom: 103px;
+        left: 5px;
+    }
+
+    .text .positionComicBallon2::after {
+        top: -20px;
+        transform: rotate(0deg);
+    }
+
+    .text .positionComicBallon3 {
+        bottom: 100px;
+        right: 5px;
+    }
+    
+    .text .positionComicBallon3::after {
+        top: -20px;
+        transform: rotate(90deg);
     }
 }
