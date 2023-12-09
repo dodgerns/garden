@@ -29,13 +29,9 @@ export default class SceneController{
     sendMessage(message){
         this.communication.sendMessage(message);
     }
-    receiveMessage(showMessage){
-        this.communication.receiveMessage(showMessage);
-    }
     leaveRoom(){
         this.communication.leaveRoom();
     }
-    addEntity(){}
     onChangeOrientation(){
         screen.orientation.addEventListener("change", (event) => {
             const type = event.target.type;

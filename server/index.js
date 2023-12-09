@@ -2,6 +2,8 @@ const express = require("express");
 const http = require('http');
 const { Server } = require("socket.io");
 const ConnectionDB = require('./connection/connection_db.js');
+const ApiRest = require('./api_rest/api_rest.js');
+const Rooms = require('./room/rooms.js');
 
 async function main() {
     const app = express();
@@ -12,10 +14,8 @@ async function main() {
     const connectionDB = new ConnectionDB();
     await connectionDB.updateData();
 
-    const ApiRest = require('./api_rest/api_rest.js');
     const apiRest = new ApiRest(app, connectionDB);
 
-    const Rooms = require('./room/rooms.js');
     const rooms = new Rooms(io, connectionDB);
 
     server.listen(port, () => console.log(`App listening on port ${port}!`));

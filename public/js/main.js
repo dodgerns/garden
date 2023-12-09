@@ -20,9 +20,6 @@ class Main{
     start(){
         this.sceneController.start();
     }
-    onMarkerFound(){
-        console.log('onMarkerFound');
-    }
 }
 document.addEventListener('DOMContentLoaded', function () {
     const main = new Main();
