@@ -1,15 +1,13 @@
 import { changePosition, getRandomOffset } from '../lib/utils.js';
 
 export default class MainScene{
-    constructor(){
-        this.eventScreen = 'ontouchstart' in window ? "touchstart": "mousedown";
-    }
+    constructor(){}
     addNfts(sceneId, nfts, joinRoom, sendMessageSocket, leaveRoom){
         const scene = document.querySelector(sceneId);
         const entriesPlants = Object.entries(nfts);
         
         const sendMessageHola = ()=>sendMessageSocket("hola");
-
+        const eventScreen = 'ontouchstart' in window ? "touchstart": "mousedown";
         for (const [keyPlant, value] of entriesPlants) {
             
             const a_nft = value['a-nft'];
@@ -33,13 +31,13 @@ export default class MainScene{
                     message.id = message.id + getRandomOffset();
                     this.addEntity(nftElement, message);
                 });
-                window.addEventListener(this.eventScreen, sendMessageHola);
+                window.addEventListener(eventScreen, sendMessageHola);
                 sendMessageHola();
               });
             scene.appendChild(nftElement);
             nftElement.addEventListener('markerLost', () => {
                 leaveRoom();
-                window.removeEventListener(this.eventScreen, sendMessageHola);
+                window.removeEventListener(eventScreen, sendMessageHola);
                 const deleteElements = document.querySelectorAll('.text');
                 deleteElements.forEach(function(element) {
                     element.parentNode.removeChild(element);
