@@ -21,7 +21,7 @@ export default class CommunicationRoom {
     }
     leaveRoom(){
         if(this.room){
-            this.socketIo.emit('leaveRoom');
+            this.socketIo.emit('leaveRoom', this.room);
             this.room = null;
             this.showMessage = null;
         }
