@@ -1,4 +1,4 @@
-import { changePosition } from '../lib/utils.js';
+import { changePosition, getRandomOffset } from '../lib/utils.js';
 
 export default class MainScene{
     constructor(){
@@ -27,6 +27,7 @@ export default class MainScene{
                 this.addNarrative(textContainer, narrative);
                 joinRoom(keyPlant, (message)=>{
                     message.position = changePosition(message.position);
+                    message.id = message.id + getRandomOffset();
                     this.addEntity(nftElement, message);
                 });
                 window.addEventListener('mousedown', ()=>sendMessage("hola"));
