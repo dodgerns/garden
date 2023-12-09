@@ -15,6 +15,10 @@ class ApiRest {
       this.appExpress.get('/nfts',( req, res)=>{
         res.json(this.connection.getDataPlant());
       });
+      this.appExpress.get('/update_data',( req, res)=>{
+        this.connection.updateData();
+        res.json({ "status": "update start" });
+      });
     }
   }
   
