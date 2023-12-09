@@ -1,3 +1,5 @@
+import { changePosition } from '../lib/utils.js';
+
 export default class MainScene{
     constructor(){
     }
@@ -24,6 +26,7 @@ export default class MainScene{
                 this.addTexts(textContainer, texts);
                 this.addNarrative(textContainer, narrative);
                 joinRoom(keyPlant, (message)=>{
+                    message.position = changePosition(message.position);
                     this.addEntity(nftElement, message);
                 });
                 window.addEventListener('mousedown', ()=>sendMessage("hola"));

@@ -76,7 +76,7 @@ body{
 
 @media screen and (orientation: portrait) {
     .text .positionComicBallon0 {
-        top: 15px;
+        top: 55px;
         left: 5px;
     }
 
@@ -86,7 +86,7 @@ body{
     }
 
     .text .positionComicBallon1 {
-        top: 100px;
+        top: 140px;
         right: 5px;
     }
 
@@ -118,7 +118,7 @@ body{
 
 @media screen and (orientation: landscape) {
     .text .positionComicBallon0 {
-        top: 10px;
+        top: 50px;
         left: 5px;
     }
 
@@ -128,7 +128,7 @@ body{
     }
 
     .text .positionComicBallon1 {
-        top: 13px;
+        top: 53px;
         right: 5px;
     }
 

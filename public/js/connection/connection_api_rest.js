@@ -1,4 +1,4 @@
-export default class ConnectionBase{
+export default class ConnectionApiRest{
     constructor(){
     }
     async getPlants() {

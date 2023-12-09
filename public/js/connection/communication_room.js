@@ -1,4 +1,4 @@
-export default class Communication {
+export default class CommunicationRoom {
     constructor(socketIo){
         this.socketIo = socketIo;
         this.room = null;
