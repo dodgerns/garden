@@ -43,7 +43,7 @@ class ConnectionDB {
         return this.messages;
     }
     getRooms(){
-        return ['pino', 'manzanilla'];
+        return this.rooms;
     }
 
 
