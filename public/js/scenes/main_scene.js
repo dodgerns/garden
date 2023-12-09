@@ -7,7 +7,6 @@ export default class MainScene{
         const entriesPlants = Object.entries(nfts);
         
         const sendMessageHola = ()=>sendMessageSocket("hola");
-        const eventScreen = 'ontouchstart' in window ? "touchstart": "mousedown";
         for (const [keyPlant, value] of entriesPlants) {
             
             const a_nft = value['a-nft'];
@@ -31,13 +30,13 @@ export default class MainScene{
                     message.id = message.id + getRandomOffset();
                     this.addEntity(nftElement, message);
                 });
-                window.addEventListener(eventScreen, sendMessageHola);
+                window.addEventListener("touchstart", sendMessageHola);
                 sendMessageHola();
               });
             scene.appendChild(nftElement);
             nftElement.addEventListener('markerLost', () => {
                 leaveRoom();
-                window.removeEventListener(eventScreen, sendMessageHola);
+                window.removeEventListener("touchstart", sendMessageHola);
                 const deleteElements = document.querySelectorAll('.text');
                 deleteElements.forEach(function(element) {
                     element.parentNode.removeChild(element);
