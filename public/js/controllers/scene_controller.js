@@ -1,6 +1,5 @@
 export default class SceneController{
     constructor(config){
-        this.configIds = config.configIds;
         this.plantsInformation = config.plantsInformation;
         this.mainScene = config.mainScene;
         this.communication = config.communication;
@@ -11,9 +10,7 @@ export default class SceneController{
     async addNfts() {
         try {
             const plants = await this.plantsInformation.getNftPlants();
-            const idScene = this.configIds.idScene;
             this.mainScene.addNfts(
-                idScene,
                 plants,
                 (room, showMessage) => this.joinRoom(room, showMessage),
                 (message) => this.sendMessage(message),

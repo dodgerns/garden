@@ -1,4 +1,3 @@
-import configIdsHtml from "./config/config_ids_html.js";
 import ConnectionApiRest from "./connection/connection_api_rest.js";
 import PlantsInformation from "./information/plants_information.js";
 import MainScene from "./scenes/main_scene.js";
@@ -10,7 +9,6 @@ class Main{
         const connection = new ConnectionApiRest();
         const socketIo = io();
         const config = {
-            'configIds': configIdsHtml,
             'plantsInformation': new PlantsInformation(connection),
             'mainScene': new MainScene(),
             'communication': new CommunicationRoom(socketIo)
